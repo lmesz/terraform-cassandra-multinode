@@ -23,7 +23,7 @@ resource "aws_subnet" "main" {
   vpc_id = "${aws_vpc.cassandra.id}"
   cidr_block = "10.2.5.128/25"
   map_public_ip_on_launch = true
-  availability_zone = "eu-west-3"
+  availability_zone = "eu-central-1a"
   tags {
     Name = "${var.user_name}_Main"
   }
