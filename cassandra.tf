@@ -17,7 +17,7 @@ resource "aws_instance" "cassandra_0" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      key_file = "${var.ssh_key_path}"
+      private_key = "${var.ssh_key_path}"
     }
   }
 
@@ -27,7 +27,7 @@ resource "aws_instance" "cassandra_0" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      key_file = "${var.ssh_key_path}"
+      private_key = "${var.ssh_key_path}"
     }
   }
 
@@ -37,7 +37,7 @@ resource "aws_instance" "cassandra_0" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      key_file = "${var.ssh_key_path}"
+      private_key = "${var.ssh_key_path}"
     }
   }
 }
@@ -62,7 +62,7 @@ resource "aws_instance" "cassandra_1" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      key_file = "${var.ssh_key_path}"
+      private_key = "${var.ssh_key_path}"
     }
   }
 
@@ -72,7 +72,7 @@ resource "aws_instance" "cassandra_1" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      key_file = "${var.ssh_key_path}"
+      private_key = "${var.ssh_key_path}"
     }
   }
 }
@@ -97,7 +97,7 @@ resource "aws_instance" "cassandra_2" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      key_file = "${var.ssh_key_path}"
+      private_key = "${var.ssh_key_path}"
     }
   }
 
@@ -107,13 +107,13 @@ resource "aws_instance" "cassandra_2" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      key_file = "${var.ssh_key_path}"
+      private_key = "${var.ssh_key_path}"
     }
   }
 }
 
 resource "aws_ebs_volume" "cassandra_0" {
-  availability_zone = "us-west-2a"
+  availability_zone = "eu-west-3"
   size = 500
   type = "gp2"
 
@@ -123,7 +123,7 @@ resource "aws_ebs_volume" "cassandra_0" {
 }
 
 resource "aws_ebs_volume" "cassandra_1" {
-  availability_zone = "us-west-2a"
+  availability_zone = "eu-west-3"
   size = 500
   type = "gp2"
 
@@ -133,7 +133,7 @@ resource "aws_ebs_volume" "cassandra_1" {
 }
 
 resource "aws_ebs_volume" "cassandra_2" {
-  availability_zone = "us-west-2a"
+  availability_zone = "eu-west-3"
   size = 500
   type = "gp2"
 
