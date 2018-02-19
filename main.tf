@@ -2,7 +2,7 @@ module "cassandra_security_group" {
   source = "github.com/terraform-community-modules/tf_aws_sg//sg_cassandra"
   security_group_name = "${var.security_group_name}-cassandra"
   vpc_id = "${aws_vpc.cassandra.id}"
-  source_cidr_block = ["10.2.5.128/25"]
+  source_cidr_block = ["10.0.0.0/8"]
 }
 
 provider "aws" {
@@ -21,7 +21,7 @@ resource "aws_vpc" "cassandra" {
 
 resource "aws_subnet" "main" {
   vpc_id = "${aws_vpc.cassandra.id}"
-  cidr_block = "10.2.5.128/25"
+  cidr_block = "10.0.0.0/8"
   map_public_ip_on_launch = true
   availability_zone = "eu-central-1a"
   tags {
