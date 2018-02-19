@@ -112,7 +112,7 @@ resource "aws_instance" "cassandra_2" {
   }
 }
 
-resource "aws_instance" "cassandra_2" {
+resource "aws_instance" "cassandra_3" {
   instance_type = "${var.instance_type}"
   ami = "${var.ami}"
   key_name = "${var.ssh_key_name}"
