@@ -4,7 +4,7 @@ resource "aws_instance" "cassandra_0" {
   key_name = "${var.ssh_key_name}"
   private_ip = "10.2.5.170"
   subnet_id = "${aws_subnet.cassandra.id}"
-  vpc_security_group_ids = ["${module.cassandra_security_group.cassandra.id}", "${aws_security_group.cassandra_net.id}", "${aws_security_group.cassandra_ssh.id}"]
+  vpc_security_group_ids = ["${module.cassandra_security_group.security_group_id}", "${aws_security_group.cassandra_net.id}", "${aws_security_group.cassandra_ssh.id}"]
   depends_on = ["aws_internet_gateway.cassandra"]
 
   tags {
@@ -49,7 +49,7 @@ resource "aws_instance" "cassandra_1" {
   key_name = "${var.ssh_key_name}"
   private_ip = "10.2.5.171"
   subnet_id = "${aws_subnet.cassandra.id}"
-  vpc_security_group_ids = ["${module.cassandra_security_group.cassandra.id}", "${aws_security_group.cassandra_net.id}", "${aws_security_group.cassandra_ssh.id}"]
+  vpc_security_group_ids = ["${module.cassandra_security_group.security_group_id}", "${aws_security_group.cassandra_net.id}", "${aws_security_group.cassandra_ssh.id}"]
   depends_on = ["aws_internet_gateway.cassandra", "aws_instance.cassandra_0"]
 
   tags {
@@ -84,7 +84,7 @@ resource "aws_instance" "cassandra_2" {
   key_name = "${var.ssh_key_name}"
   private_ip = "10.2.5.172"
   subnet_id = "${aws_subnet.cassandra.id}"
-  vpc_security_group_ids = ["${module.cassandra_security_group.cassandra.id}", "${aws_security_group.cassandra_net.id}", "${aws_security_group.cassandra_ssh.id}"]
+  vpc_security_group_ids = ["${module.cassandra_security_group.security_group_id}", "${aws_security_group.cassandra_net.id}", "${aws_security_group.cassandra_ssh.id}"]
   depends_on = ["aws_internet_gateway.cassandra", "aws_instance.cassandra_1"]
 
   tags {
@@ -118,7 +118,7 @@ resource "aws_instance" "cassandra_3" {
   key_name = "${var.ssh_key_name}"
   private_ip = "10.3.6.170"
   subnet_id = "${aws_subnet.cassandra1.id}"
-  vpc_security_group_ids = ["${module.cassandra_security_group.cassandra1.id}", "${aws_security_group.cassandra1_net.id}", "${aws_security_group.cassandra1_ssh.id}"]
+  vpc_security_group_ids = ["${module.cassandra1_security_group.security_group_id}", "${aws_security_group.cassandra1_net.id}", "${aws_security_group.cassandra1_ssh.id}"]
   depends_on = ["aws_internet_gateway.cassandra1"]
 
   tags {
@@ -163,7 +163,7 @@ resource "aws_instance" "cassandra_4" {
   key_name = "${var.ssh_key_name}"
   private_ip = "10.3.6.171"
   subnet_id = "${aws_subnet.cassandra1.id}"
-  vpc_security_group_ids = ["${module.cassandra_security_group.cassandra1.id}", "${aws_security_group.cassandra1_net.id}", "${aws_security_group.cassandra1_ssh.id}"]
+  vpc_security_group_ids = ["${module.cassandra1_security_group.security_group_id}", "${aws_security_group.cassandra1_net.id}", "${aws_security_group.cassandra1_ssh.id}"]
   depends_on = ["aws_internet_gateway.cassandra1", "aws_instance.cassandra_3"]
 
   tags {
@@ -197,8 +197,8 @@ resource "aws_instance" "cassandra_5" {
   ami = "${var.ami}"
   key_name = "${var.ssh_key_name}"
   private_ip = "10.3.6.172"
-  subnet_id = "${aws_subnet.main.cassandra1}"
-  vpc_security_group_ids = ["${module.cassandra_security_group.cassandra1.id}", "${aws_security_group.cassandra1_net.id}", "${aws_security_group.cassandra1_ssh.id}"]
+  subnet_id = "${aws_subnet.cassandra1.id}"
+  vpc_security_group_ids = ["${module.cassandra1_security_group.security_group_id}", "${aws_security_group.cassandra1_net.id}", "${aws_security_group.cassandra1_ssh.id}"]
   depends_on = ["aws_internet_gateway.cassandra1", "aws_instance.cassandra_4"]
 
   tags {

@@ -4,12 +4,18 @@ provider "aws" {
   region = "${var.region}"
 }
 
-module "cassandra_security_group" "cassandra" {
-  name = "cassandra_security_group"
+module "cassandra_security_group" {
   source = "github.com/terraform-community-modules/tf_aws_sg//sg_cassandra"
   security_group_name = "${var.security_group_name}-cassandra"
   vpc_id = "${aws_vpc.cassandra.id}"
   source_cidr_block = ["10.2.5.0/24"]
+}
+
+module "cassandra1_security_group" {
+  source = "github.com/terraform-community-modules/tf_aws_sg//sg_cassandra"
+  security_group_name = "${var.security_group_name}-cassandra"
+  vpc_id = "${aws_vpc.cassandra.id}"
+  source_cidr_block = ["10.3.5.0/24"]
 }
 
 resource "aws_vpc" "cassandra" {
