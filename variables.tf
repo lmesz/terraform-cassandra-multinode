@@ -9,3 +9,4 @@ variable "security_group_name" { default = "cassandra" }
 variable "ami" { default = "ami-5055cd3f" }
 variable "source_cidr_block" { default = "10.2.5.128/25" }
 variable "region" { default = "eu-central-1" }
+variable "az" { default = "eu-central-1a"}

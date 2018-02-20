@@ -38,7 +38,8 @@ resource "aws_subnet" "cassandra" {
   vpc_id = "${aws_vpc.cassandra.id}"
   cidr_block = "10.2.5.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
+  
   tags {
     Name = "${var.user_name}_cassandra"
   }
@@ -48,7 +49,7 @@ resource "aws_subnet" "cassandra1" {
   vpc_id = "${aws_vpc.cassandra1.id}"
   cidr_block = "10.3.5.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
   tags {
     Name = "${var.user_name}_cassandra1"
   }

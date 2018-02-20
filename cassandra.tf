@@ -227,7 +227,7 @@ resource "aws_instance" "cassandra_5" {
 }
 
 resource "aws_ebs_volume" "cassandra_0" {
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
   size = 500
   type = "gp2"
 
@@ -237,7 +237,7 @@ resource "aws_ebs_volume" "cassandra_0" {
 }
 
 resource "aws_ebs_volume" "cassandra_1" {
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
   size = 500
   type = "gp2"
 
@@ -247,7 +247,7 @@ resource "aws_ebs_volume" "cassandra_1" {
 }
 
 resource "aws_ebs_volume" "cassandra_2" {
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
   size = 500
   type = "gp2"
 
@@ -257,7 +257,7 @@ resource "aws_ebs_volume" "cassandra_2" {
 }
 
 resource "aws_ebs_volume" "cassandra_3" {
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
   size = 500
   type = "gp2"
 
@@ -267,7 +267,7 @@ resource "aws_ebs_volume" "cassandra_3" {
 }
 
 resource "aws_ebs_volume" "cassandra_4" {
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
   size = 500
   type = "gp2"
 
@@ -277,7 +277,7 @@ resource "aws_ebs_volume" "cassandra_4" {
 }
 
 resource "aws_ebs_volume" "cassandra_5" {
-  availability_zone = "eu-central-1a"
+  availability_zone = "${var.az}"
   size = 500
   type = "gp2"
 
