@@ -212,3 +212,25 @@ resource "aws_security_group" "cassandra1_ssh" {
   }
 
 }
+
+#Source: https://www.nicksantamaria.net/post/how-to-peer-vpcs-with-terraform/
+data "aws_caller_identity" "current" {}
+
+resource "aws_vpc_peering_connection" "primary2secondary" {
+  vpc_id = "${aws_vpc.cassandra.id}"
+  peer_owner_id = "${data.aws_caller_identity.current.account_id}"
+  peer_vpc_id = "${aws_vpc.cassandra1.id}"
+  auto_accept = true
+}
+
+resource "aws_route" "primary2secondary" {
+  route_table_id = "${aws_vpc.cassandra.main_route_table_id}"
+  destination_cidr_block = "${aws_vpc.cassandra1.cidr_block}"
+  vpc_peering_connection_id = "${aws_vpc_peering_connection.primary2secondary.id}"
+}
+
+resource "aws_route" "secondary2primary" {
+  route_table_id = "${aws_vpc.cassandra1.main_route_table_id}"
+  destination_cidr_block = "${aws_vpc.cassandra.cidr_block}"
+  vpc_peering_connection_id = "${aws_vpc_peering_connection.primary2secondary.id}"
+}
