@@ -1,0 +1,4 @@
+ToDos:
+
+ * add the other vpc's network to the ExpicitelyAssociated subnet
+ * add port 7000 port security group
